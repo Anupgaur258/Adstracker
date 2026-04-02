@@ -1,0 +1,57 @@
+import { PricingPlan } from "@/types";
+
+export const pricingPlans: PricingPlan[] = [
+  {
+    id: "free",
+    name: "Free",
+    price: 0,
+    period: "monthly",
+    credits: 10,
+    features: [
+      "10 video credits per month",
+      "720p export quality",
+      "3 subtitle styles",
+      "Basic hook templates",
+      "Watermarked exports",
+    ],
+    cta: "Get Started",
+  },
+  {
+    id: "pro",
+    name: "Pro",
+    price: 29,
+    period: "yearly",
+    credits: 500,
+    features: [
+      "500 video credits per month",
+      "1080p export quality",
+      "All subtitle styles",
+      "All hook & CTA templates",
+      "No watermark",
+      "Priority rendering",
+      "Custom fonts",
+    ],
+    popular: true,
+    cta: "Start Free Trial",
+  },
+  {
+    id: "enterprise",
+    name: "Enterprise",
+    price: 99,
+    period: "yearly",
+    credits: "unlimited",
+    features: [
+      "Unlimited video credits",
+      "4K export quality",
+      "All subtitle styles",
+      "All templates",
+      "No watermark",
+      "Priority rendering",
+      "Custom fonts & branding",
+      "API access",
+      "Dedicated support",
+      "Team collaboration",
+    ],
+    cta: "Contact Sales",
+  },
+];

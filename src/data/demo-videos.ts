@@ -1,0 +1,58 @@
+import { UploadedVideo } from "@/types";
+
+export const demoVideos: UploadedVideo[] = [
+  {
+    id: "demo-v1",
+    name: "Sunset Palm Trees",
+    size: 0,
+    type: "video/mp4",
+    objectUrl: "https://assets.mixkit.co/videos/1170/1170-360.mp4",
+    thumbnailUrl: "https://assets.mixkit.co/videos/1170/1170-thumb-720-0.jpg",
+    duration: 12,
+  },
+  {
+    id: "demo-v2",
+    name: "Palm Tree Sunrise",
+    size: 0,
+    type: "video/mp4",
+    objectUrl: "https://assets.mixkit.co/videos/1191/1191-360.mp4",
+    thumbnailUrl: "https://assets.mixkit.co/videos/1191/1191-thumb-720-0.jpg",
+    duration: 10,
+  },
+  {
+    id: "demo-v3",
+    name: "White Flowers Breeze",
+    size: 0,
+    type: "video/mp4",
+    objectUrl: "https://assets.mixkit.co/videos/1187/1187-360.mp4",
+    thumbnailUrl: "https://assets.mixkit.co/videos/1187/1187-thumb-720-0.jpg",
+    duration: 15,
+  },
+  {
+    id: "demo-v4",
+    name: "Beach Sunset Silhouette",
+    size: 0,
+    type: "video/mp4",
+    objectUrl: "https://assets.mixkit.co/videos/1214/1214-360.mp4",
+    thumbnailUrl: "https://assets.mixkit.co/videos/1214/1214-thumb-720-0.jpg",
+    duration: 14,
+  },
+  {
+    id: "demo-v5",
+    name: "Ocean Waves Aerial",
+    size: 0,
+    type: "video/mp4",
+    objectUrl: "https://assets.mixkit.co/videos/51500/51500-360.mp4",
+    thumbnailUrl: "https://assets.mixkit.co/videos/51500/51500-thumb-720-0.jpg",
+    duration: 18,
+  },
+  {
+    id: "demo-v6",
+    name: "Wooden Pier Waterfront",
+    size: 0,
+    type: "video/mp4",
+    objectUrl: "https://assets.mixkit.co/videos/1197/1197-360.mp4",
+    thumbnailUrl: "https://assets.mixkit.co/videos/1197/1197-thumb-720-0.jpg",
+    duration: 16,
+  },
+];
