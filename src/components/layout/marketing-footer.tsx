@@ -3,7 +3,7 @@ import { Separator } from "@/components/ui/separator";
 
 export function MarketingFooter() {
   return (
-    <footer className="border-t border-border bg-sidebar">
+    <footer className="border-t border-border bg-sidebar mt-[-90px]">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">

@@ -8,9 +8,9 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-32">
+    <section className="relative overflow-hidden mt-[-80px] py-24 md:py-32">
       {/* Background effects */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 mb-4 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-purple/10 rounded-full blur-[128px]" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-blue/10 rounded-full blur-[128px]" />
       </div>
@@ -22,7 +22,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-xs text-muted-foreground mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-xs text-muted-foreground mb-6 mt-3">
               <span className="w-2 h-2 rounded-full gradient-bg" />
               Scale your video ad creative 100x
             </div>
@@ -33,7 +33,7 @@ export function Hero() {
               {" "}in Minutes
             </h1>
 
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-3 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Combine your videos with hooks, CTAs, and subtitle styles.
               Adstacker generates every possible combination automatically.
             </p>
