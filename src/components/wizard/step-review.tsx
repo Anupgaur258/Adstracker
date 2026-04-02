@@ -82,26 +82,42 @@ export function StepReview() {
               <Type className="h-3.5 w-3.5 text-brand-blue" />
               <h3 className="font-semibold text-foreground text-xs">Hooks ({hookCount})</h3>
             </div>
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               {filledHooks.map((h, i) => {
                 const origIndex = wizardState.hooks.indexOf(h);
                 const tmpl = hookTemplates.find((t) => t.id === wizardState.hookTemplates[origIndex]);
                 const color = wizardState.hookColors[origIndex] || "#FFFFFF";
                 const font = wizardState.hookFonts[origIndex] || "Inter";
                 const fontSize = wizardState.hookFontSizes[origIndex] || 28;
+                const boxColor = wizardState.hookBoxColors[origIndex] || "transparent";
+                const outlineColor = wizardState.hookOutlineColors[origIndex] || "transparent";
+                const outlineWidth = wizardState.hookOutlineWidths[origIndex] || 0;
                 return (
-                  <div key={i} className="flex items-center gap-2">
-                    <span
-                      className="w-2.5 h-2.5 rounded-full shrink-0 border border-border"
-                      style={{ backgroundColor: color }}
-                    />
-                    <p className="text-xs text-muted-foreground truncate flex-1">{h}</p>
-                    <span className="text-[9px] text-muted-foreground shrink-0">{font} · {fontSize}px</span>
-                    {tmpl && (
-                      <Badge variant="outline" className="bg-muted border-border text-[9px] px-1 py-0 shrink-0">
-                        {tmpl.name}
-                      </Badge>
-                    )}
+                  <div key={i} className="rounded-lg bg-muted/50 p-2 space-y-1">
+                    <div
+                      className="px-2 py-1 rounded text-sm truncate"
+                      style={{
+                        fontFamily: font,
+                        color,
+                        backgroundColor: boxColor !== "transparent" ? boxColor : undefined,
+                        border: outlineWidth > 0 ? `${outlineWidth}px solid ${outlineColor}` : undefined,
+                        textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                      }}
+                    >
+                      {h}
+                    </div>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span
+                        className="w-2.5 h-2.5 rounded-full shrink-0 border border-border"
+                        style={{ backgroundColor: color }}
+                      />
+                      <span className="text-[9px] text-muted-foreground">{font} · {fontSize}px</span>
+                      {tmpl && (
+                        <Badge variant="outline" className="bg-muted border-border text-[9px] px-1 py-0 shrink-0">
+                          {tmpl.name}
+                        </Badge>
+                      )}
+                    </div>
                   </div>
                 );
               })}
@@ -117,21 +133,42 @@ export function StepReview() {
               <MousePointerClick className="h-3.5 w-3.5 text-brand-cyan" />
               <h3 className="font-semibold text-foreground text-xs">CTAs ({ctaCount})</h3>
             </div>
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               {filledCtas.map((c, i) => {
                 const origIndex = wizardState.ctas.indexOf(c);
                 const tmpl = ctaTemplates.find((t) => t.id === wizardState.ctaTemplates[origIndex]);
                 const color = wizardState.ctaColors[origIndex] || "#FFFFFF";
+                const font = wizardState.ctaFonts[origIndex] || "Inter";
+                const fontSize = wizardState.ctaFontSizes[origIndex] || 20;
+                const boxColor = wizardState.ctaBoxColors[origIndex] || "transparent";
+                const outlineColor = wizardState.ctaOutlineColors[origIndex] || "transparent";
+                const outlineWidth = wizardState.ctaOutlineWidths[origIndex] || 0;
                 return (
-                  <div key={i} className="flex items-center gap-2">
-                    <span
-                      className="w-2.5 h-2.5 rounded-full shrink-0 border border-border"
-                      style={{ backgroundColor: color }}
-                    />
-                    <Badge variant="outline" className="bg-muted border-border text-[10px]">{c}</Badge>
-                    {tmpl && (
-                      <span className="text-[9px] text-muted-foreground shrink-0">{tmpl.name}</span>
-                    )}
+                  <div key={i} className="rounded-lg bg-muted/50 p-2 space-y-1">
+                    <div
+                      className="px-2 py-1 rounded text-sm truncate inline-block"
+                      style={{
+                        fontFamily: font,
+                        color,
+                        backgroundColor: boxColor !== "transparent" ? boxColor : undefined,
+                        border: outlineWidth > 0 ? `${outlineWidth}px solid ${outlineColor}` : undefined,
+                        textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                      }}
+                    >
+                      {c}
+                    </div>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span
+                        className="w-2.5 h-2.5 rounded-full shrink-0 border border-border"
+                        style={{ backgroundColor: color }}
+                      />
+                      <span className="text-[9px] text-muted-foreground">{font} · {fontSize}px</span>
+                      {tmpl && (
+                        <Badge variant="outline" className="bg-muted border-border text-[9px] px-1 py-0 shrink-0">
+                          {tmpl.name}
+                        </Badge>
+                      )}
+                    </div>
                   </div>
                 );
               })}
@@ -144,15 +181,26 @@ export function StepReview() {
               <Subtitles className="h-3.5 w-3.5 text-brand-teal" />
               <h3 className="font-semibold text-foreground text-xs">Subtitle Styles ({subtitleCount})</h3>
             </div>
-            <div className="space-y-0.5">
+            <div className="space-y-2">
               {selectedStyles.map((s) => (
-                <div key={s.id} className="flex items-center gap-2">
-                  <p className="text-xs text-muted-foreground">{s.name}</p>
-                  {s.font && (
-                    <Badge variant="outline" className="bg-muted border-border text-[9px] px-1 py-0">
-                      {s.font}
-                    </Badge>
-                  )}
+                <div key={s.id} className="rounded-lg bg-muted/50 p-2 space-y-1">
+                  <p
+                    className="text-sm truncate"
+                    style={{
+                      fontFamily: s.font || wizardState.styling.fontFamily,
+                      color: wizardState.styling.subtitleFontColor,
+                      textShadow: `0 0 ${wizardState.styling.subtitleShadowBlur}px ${wizardState.styling.subtitleShadowColor}`,
+                    }}
+                  >
+                    {s.name}
+                  </p>
+                  <div className="flex items-center gap-1.5">
+                    {s.font && (
+                      <Badge variant="outline" className="bg-muted border-border text-[9px] px-1 py-0">
+                        {s.font}
+                      </Badge>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -164,10 +212,41 @@ export function StepReview() {
               <Palette className="h-3.5 w-3.5 text-brand-cyan" />
               <h3 className="font-semibold text-foreground text-xs">Styling</h3>
             </div>
-            <div className="space-y-0.5 text-xs text-muted-foreground">
-              <p>Font: {wizardState.styling.fontFamily} · {wizardState.styling.fontSize}px</p>
-              <p>Hook: {wizardState.styling.hookDuration}s · CTA: {wizardState.styling.ctaDuration}s</p>
-              <p>Align: H-{wizardState.styling.hookXPosition} · S-{wizardState.styling.subtitleXPosition} · C-{wizardState.styling.ctaXPosition}</p>
+            <div className="space-y-2">
+              <div className="grid grid-cols-2 gap-2">
+                <div className="rounded-lg bg-muted/50 p-2">
+                  <p className="text-[9px] text-muted-foreground mb-0.5">Font</p>
+                  <p className="text-xs text-foreground font-medium" style={{ fontFamily: wizardState.styling.fontFamily }}>
+                    {wizardState.styling.fontFamily}
+                  </p>
+                  <p className="text-[9px] text-muted-foreground">{wizardState.styling.fontSize}px</p>
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2">
+                  <p className="text-[9px] text-muted-foreground mb-0.5">Text Color</p>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-3 h-3 rounded border border-border" style={{ backgroundColor: wizardState.styling.textColor }} />
+                    <span className="text-xs text-foreground">{wizardState.styling.textColor}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="rounded-lg bg-muted/50 p-2">
+                  <p className="text-[9px] text-muted-foreground mb-0.5">Durations</p>
+                  <p className="text-xs text-foreground">Hook: {wizardState.styling.hookDuration}s</p>
+                  <p className="text-xs text-foreground">CTA: {wizardState.styling.ctaDuration}s</p>
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2">
+                  <p className="text-[9px] text-muted-foreground mb-0.5">Alignment</p>
+                  <p className="text-[10px] text-foreground">H: {wizardState.styling.hookXPosition}</p>
+                  <p className="text-[10px] text-foreground">S: {wizardState.styling.subtitleXPosition}</p>
+                  <p className="text-[10px] text-foreground">C: {wizardState.styling.ctaXPosition}</p>
+                </div>
+              </div>
+              {wizardState.styling.shadowEnabled && (
+                <p className="text-[9px] text-muted-foreground flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-purple" /> Shadow enabled
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -188,10 +267,25 @@ export function StepReview() {
                 <span className="text-xs font-semibold gradient-text">{totalVideos} videos</span>
               </div>
 
-              {/* Video thumbnails preview - max 4 */}
+              {/* Video thumbnails preview with applied styling - max 4 */}
               <div className="grid grid-cols-2 gap-2 mb-3">
-                {wizardState.videos.slice(0, 4).map((v) => {
+                {wizardState.videos.slice(0, 4).map((v, vi) => {
                   const thumb = v.thumbnailUrl || demoVideos.find((d) => d.id === v.id)?.thumbnailUrl || demoVideos[0]?.thumbnailUrl || "";
+                  const hookText = filledHooks[vi % filledHooks.length] || filledHooks[0];
+                  const hookIdx = hookText ? wizardState.hooks.indexOf(hookText) : 0;
+                  const hookColor = wizardState.hookColors[hookIdx] || "#FFFFFF";
+                  const hookFont = wizardState.hookFonts[hookIdx] || "Inter";
+                  const hookBoxColor = wizardState.hookBoxColors[hookIdx] || "transparent";
+                  const ctaText = filledCtas[vi % filledCtas.length] || filledCtas[0];
+                  const ctaIdx = ctaText ? wizardState.ctas.indexOf(ctaText) : 0;
+                  const ctaColor = wizardState.ctaColors[ctaIdx] || "#FFFFFF";
+                  const ctaFont = wizardState.ctaFonts[ctaIdx] || "Inter";
+                  const ctaBoxColor = wizardState.ctaBoxColors[ctaIdx] || "transparent";
+                  const subStyle = selectedStyles[vi % selectedStyles.length] || selectedStyles[0];
+
+                  const alignClass = (pos: string) =>
+                    pos === "left" ? "text-left items-start" : pos === "right" ? "text-right items-end" : "text-center items-center";
+
                   return (
                     <div key={v.id} className="aspect-[9/16] rounded-lg overflow-hidden bg-black relative">
                       {thumb ? (
@@ -201,8 +295,72 @@ export function StepReview() {
                           <Film className="h-5 w-5 text-brand-purple/30" />
                         </div>
                       )}
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-1.5">
-                        <p className="text-[9px] text-white truncate">{v.name}</p>
+                      {/* Dark overlay for readability */}
+                      <div className="absolute inset-0 bg-black/30" />
+
+                      {/* Hook overlay - top area */}
+                      {hookText && (
+                        <div
+                          className={`absolute left-0 right-0 flex flex-col px-1.5 ${alignClass(wizardState.styling.hookXPosition)}`}
+                          style={{ top: `${wizardState.styling.hookYPosition}%` }}
+                        >
+                          <span
+                            className="text-[8px] leading-tight font-semibold px-1 py-0.5 rounded max-w-full truncate"
+                            style={{
+                              fontFamily: hookFont,
+                              color: hookColor,
+                              backgroundColor: hookBoxColor !== "transparent" ? hookBoxColor : undefined,
+                              textShadow: wizardState.styling.shadowEnabled ? "0 1px 3px rgba(0,0,0,0.7)" : undefined,
+                            }}
+                          >
+                            {hookText}
+                          </span>
+                        </div>
+                      )}
+
+                      {/* Subtitle overlay - middle-bottom area */}
+                      {subStyle && (
+                        <div
+                          className={`absolute left-0 right-0 flex flex-col px-1.5 ${alignClass(wizardState.styling.subtitleXPosition)}`}
+                          style={{ top: `${wizardState.styling.subtitleYPosition}%` }}
+                        >
+                          <span
+                            className="text-[7px] leading-tight px-1 py-0.5 rounded max-w-full truncate"
+                            style={{
+                              fontFamily: subStyle.font || wizardState.styling.fontFamily,
+                              color: wizardState.styling.subtitleFontColor,
+                              backgroundColor: wizardState.styling.subtitleBackgroundColor !== "transparent" ? wizardState.styling.subtitleBackgroundColor : undefined,
+                              textShadow: `0 0 ${wizardState.styling.subtitleShadowBlur}px ${wizardState.styling.subtitleShadowColor}`,
+                            }}
+                          >
+                            Sample subtitle text...
+                          </span>
+                        </div>
+                      )}
+
+                      {/* CTA overlay - bottom area */}
+                      {ctaText && (
+                        <div
+                          className={`absolute left-0 right-0 flex flex-col px-1.5 ${alignClass(wizardState.styling.ctaXPosition)}`}
+                          style={{ top: `${wizardState.styling.ctaYPosition}%` }}
+                        >
+                          <span
+                            className="text-[7px] leading-tight font-semibold px-1.5 py-0.5 rounded max-w-full truncate"
+                            style={{
+                              fontFamily: ctaFont,
+                              color: ctaColor,
+                              backgroundColor: ctaBoxColor !== "transparent" ? ctaBoxColor : "rgba(0,0,0,0.4)",
+                              textShadow: wizardState.styling.shadowEnabled ? "0 1px 3px rgba(0,0,0,0.7)" : undefined,
+                            }}
+                          >
+                            {ctaText}
+                          </span>
+                        </div>
+                      )}
+
+                      {/* Video name */}
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-1">
+                        <p className="text-[8px] text-white/80 truncate">{v.name}</p>
                       </div>
                     </div>
                   );

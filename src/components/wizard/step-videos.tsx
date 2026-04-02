@@ -2,7 +2,7 @@
 
 import { useProjectStore } from "@/stores/project-store";
 import { demoVideos } from "@/data/demo-videos";
-import { LIMITS, ACCEPTED_VIDEO_TYPES } from "@/lib/constants";
+import { LIMITS, ACCEPTED_VIDEO_TYPES, PROJECT_NAME_REGEX } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { UploadedVideo } from "@/types";
 import { Check, Play, Upload, X, FileVideo } from "lucide-react";
@@ -147,22 +147,50 @@ export function StepVideos() {
 
   const projectName = wizardState.projectName;
   const [nameTouched, setNameTouched] = useState(false);
-  const showNameError = nameTouched && !projectName.trim();
+  const nameEmpty = !projectName.trim();
+  const nameInvalidChars = projectName.length > 0 && !PROJECT_NAME_REGEX.test(projectName);
+  const nameTooLong = projectName.length > LIMITS.projectNameMaxChars;
+  const showNameError = nameTouched && (nameEmpty || nameInvalidChars || nameTooLong);
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value.length > LIMITS.projectNameMaxChars) {
+      toast.error(`Project name cannot exceed ${LIMITS.projectNameMaxChars} characters`);
+      return;
+    }
+    if (value && !PROJECT_NAME_REGEX.test(value)) {
+      toast.error("Only letters, numbers, spaces, hyphens, and underscores allowed");
+      return;
+    }
+    updateWizardState({ projectName: value });
+  };
 
   return (
     <div className="space-y-4">
       {/* Project Name - prominent at top */}
       <div className="space-y-1.5">
         <label className="text-xl text-foreground font-bold block">Project Name</label>
-        <Input
-          value={projectName}
-          onChange={(e) => updateWizardState({ projectName: e.target.value })}
-          onBlur={() => setNameTouched(true)}
-          placeholder="Project Name"
-          className={`h-10 bg-muted text-base focus:border-brand-purple max-w-md ${showNameError ? "border-red-500/50" : "border-border"}`}
-        />
+        <div className="relative max-w-md">
+          <Input
+            value={projectName}
+            onChange={handleNameChange}
+            onBlur={() => setNameTouched(true)}
+            placeholder="Project Name"
+            maxLength={LIMITS.projectNameMaxChars}
+            className={`h-10 bg-muted text-base focus:border-brand-purple ${showNameError ? "border-red-500/50" : "border-border"}`}
+          />
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-muted-foreground">
+            {projectName.length}/{LIMITS.projectNameMaxChars}
+          </span>
+        </div>
         {showNameError && (
-          <p className="text-[11px] text-red-400">Project name is required to proceed</p>
+          <p className="text-[11px] text-red-400">
+            {nameEmpty
+              ? "Project name is required to proceed"
+              : nameInvalidChars
+              ? "Only letters, numbers, spaces, hyphens, and underscores allowed"
+              : "Project name is too long"}
+          </p>
         )}
       </div>
 

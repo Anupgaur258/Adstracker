@@ -58,7 +58,7 @@ export default function RootLayout({
           <TooltipProvider>
             {children}
             <Toaster
-              position="bottom-right"
+              position="top-center"
               toastOptions={{
                 style: {
                   background: "var(--color-card)",

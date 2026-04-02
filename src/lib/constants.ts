@@ -18,7 +18,10 @@ export const LIMITS = {
   maxSubtitleStyles: 2,
   hookMaxChars: 80,
   ctaMaxChars: 30,
+  projectNameMaxChars: 50,
 } as const;
+
+export const PROJECT_NAME_REGEX = /^[a-zA-Z0-9\s\-_]+$/;
 
 export const CTA_SUGGESTIONS = [
   "Shop Now",
