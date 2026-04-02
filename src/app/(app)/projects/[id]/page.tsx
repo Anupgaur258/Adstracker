@@ -179,7 +179,7 @@ export default function ProjectDetailPage() {
         <div className="flex items-center gap-2 shrink-0">
           {(project.status === "draft" || project.status === "pending") && (
             <Button
-              className="gradient-bg text-white border-0 hover:opacity-90 gap-2"
+              className="gradient-bg text-foreground border-0 hover:opacity-90 gap-2"
               onClick={() => {
                 updateProject(project.id, { status: "generating" });
               }}
@@ -257,7 +257,7 @@ export default function ProjectDetailPage() {
                   </p>
                 </div>
                 <Button
-                  className="gradient-bg text-white border-0 hover:opacity-90 gap-2 mt-2"
+                  className="gradient-bg text-foreground border-0 hover:opacity-90 gap-2 mt-2"
                   onClick={() => updateProject(project.id, { status: "generating" })}
                 >
                   <Sparkles className="h-4 w-4" />

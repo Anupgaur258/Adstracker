@@ -233,7 +233,7 @@ export function StepReview() {
             <Button
               onClick={handleCreate}
               disabled={creating || creditCost > balance || !projectName.trim()}
-              className="w-full gradient-bg text-white border-0 hover:opacity-90 gap-2 h-10"
+              className="w-full gradient-bg text-foreground border-0 hover:opacity-90 gap-2 h-10"
             >
               {creating ? (
                 "Creating project..."

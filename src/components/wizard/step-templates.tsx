@@ -38,8 +38,8 @@ export function StepTemplates() {
               key={item.id}
               onClick={() => updateWizardState({ selectedLayoutTemplate: item.id })}
               className={cn(
-                "glass-card-hover text-left relative p-4 flex flex-col items-center gap-3",
-                isSelected && "ring-2 ring-brand-purple"
+                "glass-card-hover text-left relative p-4 flex flex-col items-center gap-3 border-2",
+                isSelected ? "border-brand-purple" : "border-transparent"
               )}
             >
               {/* Aspect ratio preview box */}

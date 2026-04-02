@@ -68,7 +68,7 @@ export function ResetPasswordForm() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full gradient-bg text-white border-0 hover:opacity-90"
+                className="w-full gradient-bg text-foreground border-0 hover:opacity-90"
               >
                 {loading ? "Sending..." : "Send Reset Link"}
               </Button>

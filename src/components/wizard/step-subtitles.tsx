@@ -65,8 +65,8 @@ export function StepSubtitles() {
               transition={{ delay: index * 0.05 }}
               onClick={() => toggleStyle(style.id)}
               className={cn(
-                "glass-card-hover text-left relative overflow-hidden",
-                isSelected && "ring-2 ring-brand-purple"
+                "glass-card-hover text-left relative overflow-hidden border-2",
+                isSelected ? "border-brand-purple" : "border-transparent"
               )}
             >
               {/* Preview box */}

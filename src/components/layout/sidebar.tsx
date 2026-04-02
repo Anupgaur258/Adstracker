@@ -7,7 +7,6 @@ import { Logo } from "./logo";
 import {
   LayoutDashboard,
   FolderPlus,
-  Settings,
   CreditCard,
   ChevronLeft,
   ChevronRight,
@@ -18,7 +17,6 @@ import { useState } from "react";
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/projects/new", icon: FolderPlus, label: "New Project" },
-  { href: "/settings", icon: Settings, label: "Settings" },
   { href: "/billing", icon: CreditCard, label: "Billing" },
 ];
 

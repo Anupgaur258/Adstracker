@@ -47,7 +47,15 @@ export function WizardShell() {
 
   const handleNext = () => {
     if (!canGoNext()) {
-      toast.error("Please complete this step before continuing");
+      const messages: Record<number, string> = {
+        0: !wizardState.projectName.trim()
+          ? "Please enter a project name"
+          : "Please select at least one video",
+        1: "Please write at least one hook and select a template",
+        2: "Please write at least one CTA and select a template",
+        3: "Please select at least one subtitle style",
+      };
+      toast.error(messages[currentStep] || "Please complete this step");
       return;
     }
     if (currentStep < TOTAL_STEPS - 1) {
@@ -108,8 +116,7 @@ export function WizardShell() {
         {currentStep < TOTAL_STEPS - 1 ? (
           <Button
             onClick={handleNext}
-            disabled={!canGoNext()}
-            className="gradient-bg text-white border-0 hover:opacity-90 gap-2"
+            className="gradient-bg text-foreground border-0 hover:opacity-90 gap-2"
           >
             Next
             <ChevronRight className="h-4 w-4" />

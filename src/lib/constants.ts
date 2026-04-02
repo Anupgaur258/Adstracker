@@ -1,6 +1,6 @@
 export const BRAND_COLORS = {
-  purple: "#8B5CF6",
-  blue: "#3B82F6",
+  purple: "#3B82F6",
+  blue: "#2563EB",
   cyan: "#22D3EE",
   teal: "#14B8A6",
   accent: "#5DD9C1",
@@ -9,7 +9,7 @@ export const BRAND_COLORS = {
   elevated: "#1A1F3D",
 } as const;
 
-export const GRADIENT = "linear-gradient(135deg, #8B5CF6, #3B82F6, #22D3EE, #14B8A6)";
+export const GRADIENT = "linear-gradient(135deg, #3B82F6, #22D3EE, #14B8A6)";
 
 export const LIMITS = {
   maxVideos: 4,

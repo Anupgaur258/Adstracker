@@ -22,7 +22,7 @@ export function CTASection() {
             Join thousands of marketers creating hundreds of video variations in minutes, not days.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <Button render={<Link href="/signup" />} size="lg" className="gradient-bg text-white border-0 hover:opacity-90 gap-2 h-12 px-8">
+            <Button render={<Link href="/signup" />} size="lg" className="gradient-bg text-foreground border-0 hover:opacity-90 gap-2 h-12 px-8">
               Start Creating for Free
               <ArrowRight className="h-4 w-4" />
             </Button>

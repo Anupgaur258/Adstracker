@@ -27,7 +27,7 @@ export function StepIndicator({ currentStep }: { currentStep: number }) {
                 <div
                   className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold transition-all duration-300",
-                    isCompleted && "gradient-bg text-white",
+                    isCompleted && "gradient-bg text-foreground",
                     isCurrent && "ring-2 ring-brand-purple bg-brand-purple/20 text-brand-purple",
                     !isCompleted && !isCurrent && "bg-muted text-muted-foreground"
                   )}

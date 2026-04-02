@@ -14,9 +14,9 @@ import { MousePointerClick, Check } from "lucide-react";
 import { ColorPickerAlpha } from "@/components/common/color-picker-alpha";
 
 const ctaPreviewStyle: Record<string, (color: string) => React.CSSProperties> = {
-  solid: () => ({ background: "#8B5CF6", borderRadius: 6, color: "#fff" }),
+  solid: () => ({ background: "#3B82F6", borderRadius: 6, color: "#fff" }),
   outline: (c) => ({ border: `2px solid ${c}`, borderRadius: 6, background: "transparent", color: c }),
-  gradient: () => ({ background: "linear-gradient(135deg, #8B5CF6, #3B82F6)", borderRadius: 99, color: "#fff" }),
+  gradient: () => ({ background: "linear-gradient(135deg, #3B82F6, #22D3EE)", borderRadius: 99, color: "#fff" }),
   pill: () => ({ background: "#22D3EE", borderRadius: 99, color: "#fff" }),
   minimal: (c) => ({ background: "transparent", textDecoration: "underline", color: c }),
   rounded: () => ({ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 8, color: "#fff" }),
@@ -83,11 +83,7 @@ export function StepCtas() {
   };
 
   const applySuggestion = (suggestion: string) => {
-    const emptyIndex = ctas.findIndex((c) => !c.trim());
-    if (emptyIndex !== -1) {
-      updateCta(emptyIndex, suggestion);
-      setActiveIndex(emptyIndex);
-    }
+    updateCta(activeIndex, suggestion);
   };
 
   const filledCount = ctas.filter((c) => c.trim().length > 0).length;
@@ -266,8 +262,8 @@ export function StepCtas() {
                   key={tmpl.id}
                   onClick={() => updateCtaTemplate(tmpl.id)}
                   className={cn(
-                    "glass-card-hover text-left relative overflow-hidden",
-                    isSelected && "ring-2 ring-brand-purple"
+                    "glass-card-hover text-left relative overflow-hidden border-2",
+                    isSelected ? "border-brand-purple" : "border-transparent"
                   )}
                 >
                   {/* Preview area */}
@@ -283,7 +279,7 @@ export function StepCtas() {
                         fontFamily: activeFont,
                         fontSize: `${Math.min(activeFontSize * 0.5, 13)}px`,
                         ...(activeBoxColor !== "transparent" && {
-                          backgroundColor: activeBoxColor,
+                          background: activeBoxColor,
                           borderRadius: 4,
                         }),
                         ...(activeOutlineColor !== "transparent" && activeOutlineWidth > 0 && {

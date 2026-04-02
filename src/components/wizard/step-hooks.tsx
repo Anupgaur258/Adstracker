@@ -260,8 +260,8 @@ export function StepHooks() {
                   key={tmpl.id}
                   onClick={() => updateHookTemplate(tmpl.id)}
                   className={cn(
-                    "glass-card-hover text-left relative overflow-hidden",
-                    isSelected && "ring-2 ring-brand-purple"
+                    "glass-card-hover text-left relative overflow-hidden border-2",
+                    isSelected ? "border-brand-purple" : "border-transparent"
                   )}
                 >
                   {/* Preview area */}

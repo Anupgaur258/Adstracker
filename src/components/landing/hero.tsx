@@ -39,7 +39,7 @@ export function Hero() {
             </p>
 
             <div className="flex items-center justify-center gap-4 mt-10">
-              <Button render={<Link href="/signup" />} size="lg" className="gradient-bg text-white border-0 hover:opacity-90 gap-2 h-12 px-8">
+              <Button render={<Link href="/signup" />} size="lg" className="gradient-bg text-foreground border-0 hover:opacity-90 gap-2 h-12 px-8">
                 Get Started Free
                 <ArrowRight className="h-4 w-4" />
               </Button>

@@ -7,12 +7,11 @@ import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, LayoutDashboard, FolderPlus, Settings, CreditCard } from "lucide-react";
+import { Menu, LayoutDashboard, FolderPlus, CreditCard } from "lucide-react";
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/projects/new", icon: FolderPlus, label: "New Project" },
-  { href: "/settings", icon: Settings, label: "Settings" },
   { href: "/billing", icon: CreditCard, label: "Billing" },
 ];
 

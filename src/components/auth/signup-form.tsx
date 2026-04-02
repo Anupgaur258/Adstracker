@@ -115,7 +115,7 @@ export function SignupForm() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full gradient-bg text-white border-0 hover:opacity-90"
+          className="w-full gradient-bg text-foreground border-0 hover:opacity-90"
         >
           {loading ? "Creating account..." : "Create Account"}
         </Button>

@@ -96,7 +96,7 @@ export function LoginForm() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full gradient-bg text-white border-0 hover:opacity-90"
+          className="w-full gradient-bg text-foreground border-0 hover:opacity-90"
         >
           {loading ? "Signing in..." : "Sign In"}
         </Button>

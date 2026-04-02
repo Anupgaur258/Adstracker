@@ -20,7 +20,7 @@ export function PlanCard({ plan, index = 0 }: { plan: PricingPlan; index?: numbe
       )}
     >
       {plan.popular && (
-        <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 gradient-bg text-white border-0">
+        <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 gradient-bg text-foreground border-0">
           Most Popular
         </Badge>
       )}
@@ -56,7 +56,7 @@ export function PlanCard({ plan, index = 0 }: { plan: PricingPlan; index?: numbe
         className={cn(
           "w-full",
           plan.popular
-            ? "gradient-bg text-white border-0 hover:opacity-90"
+            ? "gradient-bg text-foreground border-0 hover:opacity-90"
             : "bg-muted border-border hover:bg-accent"
         )}
       >

@@ -29,7 +29,7 @@ export function MarketingNavbar() {
 
         <div className="flex items-center gap-3">
           {hydrated && isLoggedIn ? (
-            <Button render={<Link href="/dashboard" />} className="gradient-bg text-white border-0 hover:opacity-90">
+            <Button render={<Link href="/dashboard" />} className="gradient-bg text-foreground border-0 hover:opacity-90">
               Dashboard
             </Button>
           ) : (
@@ -37,7 +37,7 @@ export function MarketingNavbar() {
               <Button variant="ghost" render={<Link href="/login" />} className="text-muted-foreground hover:text-foreground">
                 Log in
               </Button>
-              <Button render={<Link href="/signup" />} className="gradient-bg text-white border-0 hover:opacity-90">
+              <Button render={<Link href="/signup" />} className="gradient-bg text-foreground border-0 hover:opacity-90">
                 Get Started
               </Button>
             </>

@@ -58,9 +58,16 @@ export default function RootLayout({
           <TooltipProvider>
             {children}
             <Toaster
+              position="bottom-right"
               toastOptions={{
-                classNames: {
-                  toast: "bg-card border-border text-foreground",
+                style: {
+                  background: "var(--color-card)",
+                  border: "1px solid var(--color-border)",
+                  color: "var(--color-foreground)",
+                  borderRadius: "12px",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
+                  padding: "12px 16px",
+                  fontSize: "13px",
                 },
               }}
             />

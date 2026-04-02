@@ -9,8 +9,7 @@ import { Check, Play, Upload, X, FileVideo } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import { useCallback, useRef } from "react";
-import { Button } from "@/components/ui/button";
+import { useCallback, useRef, useState } from "react";
 
 function formatFileSize(bytes: number): string {
   if (bytes === 0) return "Demo";
@@ -147,28 +146,34 @@ export function StepVideos() {
   );
 
   const projectName = wizardState.projectName;
+  const [nameTouched, setNameTouched] = useState(false);
+  const showNameError = nameTouched && !projectName.trim();
 
   return (
     <div className="space-y-4">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h2 className="text-xl font-bold text-foreground">Select Videos</h2>
-          <p className="text-sm text-muted-foreground mt-1">
-            Upload your own or choose from demo videos.{" "}
-            <span className="text-brand-purple font-medium">
-              {videos.length}/{LIMITS.maxVideos} selected
-            </span>
-          </p>
-        </div>
-        <div className="shrink-0 w-64">
-          <label className="text-[11px] text-muted-foreground font-medium mb-1 block">Project Name</label>
-          <Input
-            value={projectName}
-            onChange={(e) => updateWizardState({ projectName: e.target.value })}
-            placeholder="e.g., Summer Sale Campaign"
-            className="h-8 bg-muted border-border focus:border-brand-purple text-sm"
-          />
-        </div>
+      {/* Project Name - prominent at top */}
+      <div className="space-y-1.5">
+        <label className="text-xl text-foreground font-bold block">Project Name</label>
+        <Input
+          value={projectName}
+          onChange={(e) => updateWizardState({ projectName: e.target.value })}
+          onBlur={() => setNameTouched(true)}
+          placeholder="Project Name"
+          className={`h-10 bg-muted text-base focus:border-brand-purple max-w-md ${showNameError ? "border-red-500/50" : "border-border"}`}
+        />
+        {showNameError && (
+          <p className="text-[11px] text-red-400">Project name is required to proceed</p>
+        )}
+      </div>
+
+      <div>
+        <h2 className="text-xl font-bold text-foreground">Select Videos</h2>
+        <p className="text-sm text-muted-foreground mt-1">
+          Upload your own or choose from demo videos.{" "}
+          <span className="text-brand-purple font-medium">
+            {videos.length}/{LIMITS.maxVideos} selected
+          </span>
+        </p>
       </div>
 
       {/* Upload zone - compact */}
@@ -190,20 +195,8 @@ export function StepVideos() {
           <Upload className="h-8 w-8 text-muted-foreground group-hover:text-brand-purple transition-colors shrink-0" />
           <div className="text-left">
             <p className="text-sm text-foreground font-medium">Drag & drop videos or browse files</p>
-            <p className="text-xs text-muted-foreground">MP4, MOV, or WebM · 9:16 vertical recommended</p>
+            <p className="text-xs text-muted-foreground">MP4, MOV, or WebM · 1080p · 9:16 vertical recommended</p>
           </div>
-          <Button
-            variant="outline"
-            size="sm"
-            className="bg-muted border-border hover:bg-accent gap-1.5 shrink-0"
-            onClick={(e) => {
-              e.stopPropagation();
-              fileInputRef.current?.click();
-            }}
-          >
-            <FileVideo className="h-3.5 w-3.5" />
-            Browse
-          </Button>
         </div>
       </div>
 
@@ -259,8 +252,8 @@ export function StepVideos() {
                 transition={{ delay: index * 0.05 }}
                 onClick={() => toggleDemoVideo(demo)}
                 className={cn(
-                  "glass-card-hover relative overflow-hidden text-left group",
-                  isSelected && "ring-2 ring-brand-purple"
+                  "glass-card-hover relative overflow-hidden text-left group border-2",
+                  isSelected ? "border-brand-purple" : "border-transparent"
                 )}
               >
                 <div className="aspect-[9/16] bg-gradient-to-br from-brand-purple/10 to-brand-blue/5 relative">
