@@ -32,7 +32,7 @@ export function PlanCard({ plan, index = 0 }: { plan: PricingPlan; index?: numbe
             ${plan.price}
           </span>
           {plan.price > 0 && (
-            <span className="text-sm text-muted-foreground">/{plan.period === "yearly" ? "yr" : "mo"}</span>
+            <span className="text-sm text-muted-foreground">/year</span>
           )}
         </div>
         <p className="text-sm text-muted-foreground mt-2">

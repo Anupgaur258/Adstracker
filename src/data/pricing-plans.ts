@@ -5,7 +5,7 @@ export const pricingPlans: PricingPlan[] = [
     id: "free",
     name: "Free",
     price: 0,
-    period: "monthly",
+    period: "yearly",
     credits: 10,
     features: [
       "10 video credits per month",
@@ -19,7 +19,7 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: "pro",
     name: "Pro",
-    price: 29,
+    price: 199,
     period: "yearly",
     credits: 500,
     features: [
@@ -37,7 +37,7 @@ export const pricingPlans: PricingPlan[] = [
   {
     id: "enterprise",
     name: "Enterprise",
-    price: 99,
+    price: 499,
     period: "yearly",
     credits: "unlimited",
     features: [
